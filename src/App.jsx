@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Container } from "@mui/material";
 import axios from "axios";
 
 import NewsPost from "./components/NewsPost";

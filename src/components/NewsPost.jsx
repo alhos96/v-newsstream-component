@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import "./news-post.css";
 import showComments from "../assets/icons/showComments.svg";
@@ -8,8 +8,8 @@ import Comment from "./Comment";
 import Post from "./Post";
 
 const NewsPost = ({ barData, postData, commentData }) => {
-  let noOfComments = commentData.length;
-  const [commentsVisible, setCommentsVisible] = useState(5);
+  let totalNoOfComments = commentData.length;
+  const [totalNoOfCommentsVisible, setNoOfCommentsVisible] = useState(5);
 
   return (
     <article className="news-post">
@@ -25,11 +25,11 @@ const NewsPost = ({ barData, postData, commentData }) => {
         postPicture={postData.postPicture}
         sharedWith={postData.sharedWith}
       />
-      {noOfComments > commentsVisible && (
+      {totalNoOfComments > totalNoOfCommentsVisible && (
         <>
           <button
             className="link-button more-less-comments-button"
-            onClick={() => setCommentsVisible(noOfComments)}
+            onClick={() => setNoOfCommentsVisible(totalNoOfComments)}
           >
             <img
               className="icon more-less-comments-button-icon"
@@ -43,30 +43,32 @@ const NewsPost = ({ barData, postData, commentData }) => {
         </>
       )}
 
-      {noOfComments === commentsVisible && noOfComments !== 5 && (
-        <>
-          <button
-            className="link-button more-less-comments-button"
-            onClick={() => setCommentsVisible(5)}
-          >
-            <img
-              className="icon more-less-comments-button-icon"
-              alt=""
-              aria-hidden="true"
-              src={hideComments}
-            />
-            <span>Hide comments</span>
-          </button>
-          <hr className="divider comment-divider"></hr>
-        </>
-      )}
+      {totalNoOfComments === totalNoOfCommentsVisible &&
+        totalNoOfComments !== 5 && (
+          <>
+            <button
+              className="link-button more-less-comments-button"
+              onClick={() => setNoOfCommentsVisible(5)}
+            >
+              <img
+                className="icon more-less-comments-button-icon"
+                alt=""
+                aria-hidden="true"
+                src={hideComments}
+              />
+              <span>Hide comments</span>
+            </button>
+            <hr className="divider comment-divider"></hr>
+          </>
+        )}
 
-      {noOfComments === 0 ? (
+      {totalNoOfComments === 0 ? (
         <p>no comments</p>
       ) : (
-        noOfComments > 0 &&
+        totalNoOfComments > 0 &&
+        // eslint-disable-next-line
         commentData.map((comment, i) => {
-          if (i < commentsVisible)
+          if (i < totalNoOfCommentsVisible)
             return (
               <Comment
                 key={i}

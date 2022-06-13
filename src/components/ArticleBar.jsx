@@ -1,7 +1,7 @@
 import React from "react";
 import "./article-bar.css";
 
-import { Avatar, Typography } from "@mui/material";
+import { Avatar } from "@mui/material";
 
 function ArticleBar({ avatar, username, date, timePosted = "07:45" }) {
   return (
