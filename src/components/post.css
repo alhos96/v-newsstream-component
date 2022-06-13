@@ -1,0 +1,60 @@
+#news-post-content {
+  padding: 1rem 2.5rem;
+}
+#post-headline {
+  margin-bottom: 1.5rem;
+}
+
+#post-picture {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+#post-actions {
+  margin-top: 1.5rem;
+}
+
+#shared-with-list {
+  display: flex;
+  flex: 5;
+  align-items: center;
+  max-width: 320px;
+  overflow-x: scroll;
+  background-color: white;
+}
+
+@media only screen and (min-width: 768px) {
+  #shared-with-list {
+    overflow-x: auto;
+  }
+}
+
+dt {
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 1rem 0.1rem;
+  margin-right: 0.3rem;
+  position: sticky;
+  left: 0;
+  background-color: inherit;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+#shared-with-chip {
+  font-size: 0.7rem;
+  width: 5rem;
+  max-width: 7rem;
+  height: 2rem;
+  margin-left: 0.3rem;
+  z-index: 0;
+}
+
+#shared-with-chip > div {
+  height: 25px;
+}
+
+#shared-with-avatar {
+  height: 1.3rem;
+  width: 1.3rem;
+}
