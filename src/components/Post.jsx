@@ -8,21 +8,28 @@ function Post({ headline, postText, postPicture, sharedWith }) {
   return (
     <>
       <div id="news-post-content">
-        <h5 id="post-headline">{headline && headline}</h5>
+        {headline && (
+          <h5 id="post-headline" tabIndex={0}>
+            {headline && headline}
+          </h5>
+        )}
 
         {postPicture && (
           <img
             id="post-picture"
-            aria-label="hidden"
+            aria-label="post image"
             src={postPicture}
+            aria-hidden="true"
             alt="post"
           />
         )}
 
-        <p>{postText}</p>
+        <p id="post-content" tabIndex={0}>
+          {postText}
+        </p>
 
         <div className="bar" id="post-actions">
-          <dl id="shared-with-list" tabIndex="0">
+          <dl title="Shared with" id="shared-with-list" tabIndex="0">
             <dt>Shared with:</dt>
 
             {sharedWith?.length > 0 ? (

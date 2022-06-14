@@ -13,11 +13,21 @@ function ArticleBar({ avatar, username, date, timePosted = "07:45" }) {
         src={avatar}
       />
 
-      <p className="username" id="post-username">
+      <p
+        aria-label={username}
+        className="username"
+        id="post-username"
+        tabIndex="0"
+      >
         {username}
       </p>
 
-      <p id="post-date">
+      {/** set aria label to be how long agp was post created */}
+      <p
+        aria-label={`time posted ${date} ${timePosted}`}
+        id="post-date"
+        tabIndex="0"
+      >
         {date} {timePosted}
       </p>
     </header>

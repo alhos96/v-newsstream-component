@@ -12,7 +12,7 @@ const NewsPost = ({ barData, postData, commentData }) => {
   const [totalNoOfCommentsVisible, setNoOfCommentsVisible] = useState(5);
 
   return (
-    <article className="news-post">
+    <article aria-label="news post" id="comment" className="news-post">
       <ArticleBar
         avatar={barData.avatar}
         username={barData.username}
@@ -25,10 +25,12 @@ const NewsPost = ({ barData, postData, commentData }) => {
         postPicture={postData.postPicture}
         sharedWith={postData.sharedWith}
       />
+
       {totalNoOfComments > totalNoOfCommentsVisible && (
         <>
           <button
             className="link-button more-less-comments-button"
+            aria-label="show all comments"
             onClick={() => setNoOfCommentsVisible(totalNoOfComments)}
           >
             <img
@@ -48,6 +50,7 @@ const NewsPost = ({ barData, postData, commentData }) => {
           <>
             <button
               className="link-button more-less-comments-button"
+              aria-label="hide comments"
               onClick={() => setNoOfCommentsVisible(5)}
             >
               <img
@@ -62,26 +65,28 @@ const NewsPost = ({ barData, postData, commentData }) => {
           </>
         )}
 
-      {totalNoOfComments === 0 ? (
-        <p>no comments</p>
-      ) : (
-        totalNoOfComments > 0 &&
-        // eslint-disable-next-line
-        commentData.map((comment, i) => {
-          if (i < totalNoOfCommentsVisible)
-            return (
-              <Comment
-                key={i}
-                numberOfComments={commentData.length}
-                currentCommentPosition={i}
-                avatar={comment.avatar}
-                username={comment.creator}
-                date={comment.date}
-                commentText={comment.comment}
-              />
-            );
-        })
-      )}
+      <div role="feed" aria-label="comments">
+        {totalNoOfComments === 0 ? (
+          <p>no comments</p>
+        ) : (
+          totalNoOfComments > 0 &&
+          // eslint-disable-next-line
+          commentData.map((comment, i) => {
+            if (i < totalNoOfCommentsVisible)
+              return (
+                <Comment
+                  key={i}
+                  numberOfComments={commentData.length}
+                  currentCommentPosition={i}
+                  avatar={comment.avatar}
+                  username={comment.creator}
+                  date={comment.date}
+                  commentText={comment.comment}
+                />
+              );
+          })
+        )}
+      </div>
     </article>
   );
 };

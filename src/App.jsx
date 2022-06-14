@@ -26,7 +26,7 @@ function App() {
   }, []);
 
   if (loading) {
-    return <h4>loading</h4>;
+    return <div>loading</div>;
   }
 
   if (error) {

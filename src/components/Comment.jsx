@@ -22,7 +22,12 @@ function Comment({
         <div className="bar" id="comment-info-bar">
           <Avatar className="avatar" id="comment-avatar" src={avatar} alt="" />
 
-          <p className="username" id="comment-username">
+          <p
+            className="username"
+            id="comment-username"
+            aria-label={username}
+            tabIndex="0 "
+          >
             {username}
           </p>
 
